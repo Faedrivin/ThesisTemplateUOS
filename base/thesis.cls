@@ -65,8 +65,8 @@
 %
 % \end{document}
 
-% provides Thesis class of December 2014
-\ProvidesClass{base/thesis}[2014/12/24 Thesis class]
+% provides Thesis class of June 2016
+\ProvidesClass{base/thesis}[2016/06/21 Thesis class]
 
 %%%%%%%%%%%%%%%%%%%%%
 %% OPTIONS TO PASS %%
@@ -111,20 +111,12 @@
 \setcounter{language}{0}
 \DeclareOption{english}{
   \setcounter{language}{0}
-  \def\@submitdate{\ifcase\the\month\or
-    January\or February\or March\or April\or May\or June\or
-    July\or August\or September\or October\or November\or December\fi
-    \space \number\the\year%
-  }
+  \PassOptionsToPackage{english}{babel}
 }
 \DeclareOption{german}{
   \setcounter{language}{1}
   \setlength{\parindent}{0pt} % no paragraph indentation in German
-  \def\@submitdate{\ifcase\the\month\or
-    Januar\or Februar\or M\"arz\or April\or Mai\or Juni\or
-    Juli\or August\or September\or Oktober\or November\or Dezember\fi
-    \space \number\the\year%
-  }
+  \PassOptionsToPackage{ngerman}{babel}
 }
 
 % If openroman is set only the main part of the thesis is numbered with 
@@ -145,6 +137,8 @@
 %% BASE CLASS / PACKAGES %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \LoadClass[a4paper]{report} % gets options from DeclareOptions
+
+\RequirePackage{babel} % languages
 
 \RequirePackage{graphicx} % gets options from DeclareOptions
 \graphicspath{{img/}{pics/}{base/}} % default image paths
